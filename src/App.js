@@ -17,11 +17,11 @@ import "./style.css";
   const [filterdProducts, setFilterdProducts] = useState([]);
 
   function filter(array = [], filters = {}) {
-      const keys = Object.keys(filters).filter(key => filters.hasOwnProperty(key));
-      return array.filter(elem => {
-          const commonKeys = keys.filter(key => elem.hasOwnProperty(key));
-          return commonKeys.reduce((flag, key) => (flag && filters[key].includes(elem[key])), true);
-      });
+    const keys = Object.keys(filters).filter(key => filters.hasOwnProperty(key));
+    return array.filter(elem => {
+        const commonKeys = keys.filter(key => elem.hasOwnProperty(key));
+        return commonKeys.reduce((flag, key) => (flag && filters[key].includes(elem[key])), true);
+    });
   }
 
   useEffect(() => {
