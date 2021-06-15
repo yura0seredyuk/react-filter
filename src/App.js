@@ -8,11 +8,10 @@ import "./style.css";
     {country: 'USA', img: 'link.img', genre: 'Comedy', name: 'The Ransom of Red Chief'}
   ];
 
+  let newArrFilter = [];
+
   export default function App() {
-    const [filters, setFilters] = useState({
-      country: ['Russia', 'Italy', 'France'],
-      genre: ['Comedy', 'Novel']
-  });
+    const [filters, setFilters] = useState({country: ['USA', 'Italy', 'France', 'Russia']});
 
   const [filterdProducts, setFilterdProducts] = useState([]);
 
@@ -23,6 +22,12 @@ import "./style.css";
         return commonKeys.reduce((flag, key) => (flag && filters[key].includes(elem[key])), true);
     });
   }
+
+  const handleClick = (location) => {
+    newArrFilter.push(location);
+    console.log(newArrFilter);
+    setFilters({ country: newArrFilter });
+  } 
 
   useEffect(() => {
      setFilterdProducts(filter(products, filters));
@@ -38,6 +43,8 @@ import "./style.css";
           <li>{product.name}</li>
         </ul>
       ))}
+      <button onClick={() => handleClick('USA')}>Add USA</button>
+      <button onClick={() => handleClick('France')}>Add France</button>
     </div>
   );
 }
