@@ -32,7 +32,7 @@ import "./style.css";
     <div>
       {console.log(filterdProducts)}
       {filterdProducts.map(product => (
-        <ul>
+        <ul key={product.name}>
           <li>{product.country}</li>
           <li>{product.genre}</li>
           <li>{product.name}</li>
